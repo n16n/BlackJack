@@ -81,6 +81,8 @@ function Start() {
     kreirajKarte();
     unosNovcaInt = parseInt(unosNovca.value);
     zastavicaPrvaIgra++;
+    if (novacKucaInt < 2)
+        proveraPobede(novacKucaInt);
     if ((novacIgracInt >= unosNovcaInt) && (novacKucaInt >= (unosNovcaInt + unosNovcaInt))) {
         noviNovac = novacIgracInt - unosNovcaInt;
         ulog = unosNovcaInt;
@@ -295,7 +297,7 @@ function Pobednik() {
         novacIgracInt = noviNovac;
         novacIgracPolje.innerHTML = novacIgracInt.toString();
         novacKucaInt -= (ulog * 2.5);
-        proveraPobede(novacKucaInt);
+        //proveraPobede(novacKucaInt);
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     else if ((vrednostIgrac == 21) && (brojKarataIgrac > 2)) {
@@ -307,7 +309,7 @@ function Pobednik() {
         console.log("Ulog: "+ulog + ", Igrac: " + (novacIgracInt+(ulog*2)));
         novacIgracPolje.innerHTML = novacIgracInt.toString();
         novacKucaInt -= (ulog * 2);
-        proveraPobede(novacKucaInt);
+        //proveraPobede(novacKucaInt);
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     else {
@@ -318,11 +320,13 @@ function Pobednik() {
         novacIgracInt = noviNovac;
         novacIgracPolje.innerHTML = novacIgracInt.toString();
         novacKucaInt -= (ulog * 2);
-        proveraPobede(novacKucaInt);
+        //proveraPobede(novacKucaInt);
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     unosNovca.disabled = false;
     dugmeStart.disabled = false;
+    if (novacKucaInt == 0)
+        krajPobeda();
 }
 
 function proveraPobede(novac) {
@@ -364,7 +368,8 @@ function krajPoraz() {
 }
 
 function krajPobeda() {
-    window.open("krajPobeda.html","_self");
+    localStorage.setItem("storageName", novacIgracInt);
+    window.open("krajPobeda.html","_blank");
 }
 
 function Karta(dest, rank, oznaka) {

@@ -16,10 +16,28 @@
             background-size: cover;
 
         }
+        #novac {
+            color: green;
+            text-shadow: 2px 2px 5px white;
+            font-size: 100px;
+            font-weight: bolder;
+            text-align: center;
+            
+        }
+        #divNovac {
+            margin-top: calc(100% - 88%);
+        }
     </style>
 
 </head>
 <body>
-
+    <div id = "divNovac">
+        <p id = "novac"></p>
+    </div>
+    <script>
+        var pNovac = document.getElementById("novac");
+        var pare = localStorage.getItem("storageName")
+        novac.innerHTML = (pare + " $");
+    </script>
 </body>
 </html>
