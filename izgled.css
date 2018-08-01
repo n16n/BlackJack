@@ -5,7 +5,7 @@ body, html {
 }
 
 body {
-    background: url("sto.jpeg") center no-repeat;
+    background: url("slike/sto.jpeg") center no-repeat;
     background-size: cover;
     height: 100%;
 }
@@ -56,13 +56,24 @@ body {
     padding: 3px 30px 3px 30px;
 }
 
+#karteKuca {
+    position: fixed;
+    top: calc(100% - 84%);
+    margin-left: calc(100% - 72%);
+}
+
+#karteIgrac {
+    position: fixed;
+    top: calc(100% - 43%);
+    margin-left: calc(100% - 72%);
+}
+
 #kucaKarta1 {
     background-size: contain;
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 450px;
-    margin-top: 30px;
+    margin-left: 100px;
 }
 
 #kucaKarta2 {
@@ -70,8 +81,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 550px;
-    margin-top: 30px;
+    margin-left: 200px;
 }
 
 #kucaKarta3 {
@@ -79,8 +89,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 650px;
-    margin-top: 30px;
+    margin-left: 300px;
 }
 
 #kucaKarta4 {
@@ -88,8 +97,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 750px;
-    margin-top: 30px;
+    margin-left: 400px;
 }
 
 #kucaKarta5 {
@@ -97,8 +105,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 850px;
-    margin-top: 30px;
+    margin-left: 500px;
 }
 
 #kucaKarta6 {
@@ -106,8 +113,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 950px;
-    margin-top: 30px;
+    margin-left: 600px;
 }
 
 #sredina {
@@ -130,8 +136,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 450px;
-    margin-top: 400px;
+    margin-left: 100px;
 }
 
 #igracKarta2 {
@@ -139,8 +144,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 550px;
-    margin-top: 400px;
+    margin-left: 200px;
 }
 
 #igracKarta3 {
@@ -148,8 +152,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 650px;
-    margin-top: 400px;
+    margin-left: 300px;
 }
 
 #igracKarta4 {
@@ -157,8 +160,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 750px;
-    margin-top: 400px;
+    margin-left: 400px;
 }
 
 #igracKarta5 {
@@ -166,8 +168,7 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 850px;
-    margin-top: 400px;
+    margin-left: 500px;
 }
 
 #igracKarta6 {
@@ -175,14 +176,13 @@ body {
     position: fixed;
     height: 200px;
     width: 200px;
-    margin-left: 950px;
-    margin-top: 400px;
+    margin-left: 600px;
 }
 
 #dugmad {
     position: fixed;
     top: calc(100% - 15%);
-    margin-left: 240px;
+    margin-left: calc(100% - 80%); /*240px;*/
 }
 
 #imeUlog {

@@ -6,13 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BlackJack - GameOver</title>
+    <link rel="shortcut icon" href="slike/znak-icon.jpg" type="image/x-icon" />
     <style>
         body, html {
             height: 100%;
             overflow: hidden;
         }
         body {
-            background: url("pobeda.png") center no-repeat;
+            background: url("slike/pobeda.png") center no-repeat;
             background-size: cover;
 
         }
@@ -27,6 +28,19 @@
         #divNovac {
             margin-top: calc(100% - 88%);
         }
+        #igra {
+            position: fixed;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            padding: 20px;
+            font-size: 30px;
+            font-weight: bolder;
+            color: white;
+            text-shadow: 2px 2px 5px white;
+            background-color: black;
+        }
     </style>
 
 </head>
@@ -34,10 +48,16 @@
     <div id = "divNovac">
         <p id = "novac"></p>
     </div>
+    <button id = "igra">Почетак</button>
     <script>
         var pNovac = document.getElementById("novac");
         var pare = localStorage.getItem("storageName")
         novac.innerHTML = (pare + " $");
+        var dugmeIgra = document.getElementById("igra");
+        dugmeIgra.addEventListener("click", novaIgra);
+        function novaIgra() {
+            window.open("pocetak.html","_self");
+        }
     </script>
 </body>
 </html>
