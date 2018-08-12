@@ -109,7 +109,7 @@ function Start() {
 function podeliKarte() {
     nizIgrac = [];
     nizKuca = [];
-    kucaKarta1.style.background = "url(poledjina.png) no-repeat";
+    kucaKarta1.style.background = "url(slike/poledjina.png) no-repeat";
     kucaKarta3.style.background = "url() no-repeat";
     kucaKarta4.style.background = "url() no-repeat";
     kucaKarta5.style.background = "url() no-repeat";
