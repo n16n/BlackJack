@@ -1,0 +1,228 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    background: url("slike/sto.jpeg") center no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+#naslov {
+    margin: 0;
+    font-size: 80px;
+    text-align: center;
+    vertical-align: -20px;
+    color: black;
+    text-shadow: 5px 2px 4px red;
+}
+
+#igrac, #kuca{
+    display:inline;
+    font-size: large;
+    color: white;
+}
+
+#kuca {
+    float: right;
+    margin-right: 50px;
+}
+
+#imeIgrac {
+    margin-left: 50px;
+    font-weight: bolder;
+}
+
+#novacIgrac {
+    margin-left: 30px;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid white;
+    padding: 3px 30px 3px 30px;
+}
+
+#imeKuca {
+    margin-left: 50px;
+    font-weight: bolder;
+}
+
+#novacKuca {
+    margin-left: 30px;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid white;
+    padding: 3px 30px 3px 30px;
+}
+
+#karteKuca {
+    position: fixed;
+    top: calc(100% - 84%);
+    margin-left: calc(100% - 72%);
+}
+
+#karteIgrac {
+    position: fixed;
+    top: calc(100% - 43%);
+    margin-left: calc(100% - 72%);
+}
+
+#kucaKarta1 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 100px;
+}
+
+#kucaKarta2 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 200px;
+}
+
+#kucaKarta3 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 300px;
+}
+
+#kucaKarta4 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 400px;
+}
+
+#kucaKarta5 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 500px;
+}
+
+#kucaKarta6 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 600px;
+}
+
+#sredina {
+    position: fixed;
+    width: calc(100%);
+    height: 30px;
+    top: calc(100% - 55%);
+    background: radial-gradient(ellipse, rgb(180,221,180) 0%, rgb(131,199,131) 0%,
+                                         rgb(82,177,82) 0%, rgb(0,87,0) 57%, rgb(0,36,0) 100%);
+    padding: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: 5px 2px 4px black;
+    text-align: center;
+}
+
+#igracKarta1 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 100px;
+}
+
+#igracKarta2 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 200px;
+}
+
+#igracKarta3 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 300px;
+}
+
+#igracKarta4 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 400px;
+}
+
+#igracKarta5 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 500px;
+}
+
+#igracKarta6 {
+    background-size: contain;
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    margin-left: 600px;
+}
+
+#izadji {
+    position: fixed;
+    top: calc(100% - 20%);
+    left: calc(100% - 99%);
+}
+
+#dugmad {
+    position: fixed;
+    top: calc(100% - 15%);
+    margin-left: calc(100% - 75%); /
+}
+
+#imeUlog {
+    margin-left: 50px;
+    font-size: large;
+    font-weight: bolder;
+    color: white;
+}
+
+#unosNovca {
+    width: 100px;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+#start, #hit, #stand, #izadji {
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 2px 2px 5px white;
+    background-color: black;
+    margin-left: 20px;
+}
+
+#start:hover, #hit:hover, #stand:hover, #izadji:hover {
+    background-color: transparent;
+    color: white;
+}
+
+#start:disabled, #hit:disabled, #stand:disabled, #izadji:disabled {
+    background-color: gray;
+    color: white;
+}

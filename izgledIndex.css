@@ -1,0 +1,65 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    background: url("slike/sto.jpeg") center no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+#naslov {
+    margin: 0;
+    font-size: 80px;
+    text-align: center;
+    vertical-align: -20px;
+    color: black;
+    text-shadow: 5px 2px 4px red;
+}
+
+#dugmad {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dugmePocetak, #dugmePravila {
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 2px 2px 5px white;
+    background-color: black;
+    margin-left: 20px;
+}
+
+#divPravila {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 25%;
+    left: 15%;
+    transform: translate(-10%, 0%);
+}
+
+span {
+    font-style: italic;
+    font-weight: bolder;
+    text-shadow: 5px 2px 4px red;
+}
+
+.sakrij {
+    opacity: 0;
+    transition: opacity 750ms ease-in-out;
+}
+
+.prikazi {
+    opacity: 1;
+    transition: opacity 750ms ease-in-out;
+}
