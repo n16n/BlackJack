@@ -181,14 +181,14 @@ body {
 
 #izadji {
     position: fixed;
-    top: calc(100% - 20%);
+    top: calc(100% - 40%);
     left: calc(100% - 99%);
 }
 
 #dugmad {
     position: fixed;
     top: calc(100% - 15%);
-    margin-left: calc(100% - 75%); /
+    margin-left: calc(100% - 92%); 
 }
 
 #imeUlog {
@@ -206,7 +206,7 @@ body {
     font-weight: bold;
 }
 
-#start, #hit, #stand, #izadji {
+#izadji, #start, #hit, #double, #surrender, #stand {
     border-radius: 50%;
     padding: 20px;
     font-size: 30px;
@@ -217,12 +217,12 @@ body {
     margin-left: 20px;
 }
 
-#start:hover, #hit:hover, #stand:hover, #izadji:hover {
+#izadji:hover, #start:hover, #hit:hover, #double:hover, #surrender:hover, #stand:hover{
     background-color: transparent;
     color: white;
 }
 
-#start:disabled, #hit:disabled, #stand:disabled, #izadji:disabled {
+#izadji:disabled, #start:disabled, #hit:disabled, #double:disabled, #surrender:disabled, #stand:disabled {
     background-color: gray;
     color: white;
 }

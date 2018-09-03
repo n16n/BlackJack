@@ -28,6 +28,8 @@ var dugmeIzadji = document.getElementById("izadji");
 var dugmeStart = document.getElementById("start");
 var dugmeHit = document.getElementById("hit");
 var dugmeStand = document.getElementById("stand");
+var dugmeSurrender = document.getElementById("surrender");
+var dugmeDouble = document.getElementById("double");
 
 //osluškivači
 window.addEventListener("load", proveraImena);
@@ -35,10 +37,13 @@ dugmeIzadji.addEventListener("click", Izlaz);
 dugmeStart.addEventListener("click", proveraUnosa);
 dugmeHit.addEventListener("click", Hit);
 dugmeStand.addEventListener("click", Stand);
+dugmeSurrender.addEventListener("click", Surrender);
+dugmeDouble.addEventListener("click", Double);
 
 var zastavicaPrvaIgra = 0;
 var brojKarataIgrac = 0;
 var brojKarataKuca = 0;
+var nizDouble = [9,10,11];
 
 //jedna okrenuta karta licem na dole kuće
 var poledjina = document.getElementById("poledjina");
@@ -61,8 +66,12 @@ var igracKarta6 = document.getElementById("igracKarta6");
 var vrednostKuca = 0;
 var vrednostIgrac = 0;
 
+//pozadinska muzika
+var muzika = new Audio("pesma.mp3");
+
 //proverava da li postoji korisnik koji je zatrazio isplatu
 function proveraImena() {
+    muzika.play();
     var ime = sessionStorage.getItem("igrac");
     var imeKuca = ime + "Kuca";
     for(var i = 0, len = sessionStorage.length; i < len; i++) {
@@ -77,6 +86,10 @@ function proveraImena() {
             novacKucaPolje.innerHTML = value;
         }
     }
+    dugmeHit.disabled = true;
+    dugmeStand.disabled = true;
+    dugmeSurrender.disabled = true;
+    dugmeDouble.disabled = true;
 }
 
 //korisnik trazi isplatu
@@ -131,6 +144,8 @@ function Start() {
         dugmeStart.disabled = true;
         dugmeHit.disabled = false;
         dugmeStand.disabled = false;
+        dugmeSurrender.disabled = false;
+        dugmeDouble.disabled = false;
         podeliKarte();
     }
     else {
@@ -141,6 +156,8 @@ function Start() {
             dugmeStart.disabled = true;
             dugmeHit.disabled = true;
             dugmeStand.disabled = true;
+            dugmeSurrender.disabled = true;
+            dugmeDouble.disabled = true;
             krajPoraz();
         }
     }
@@ -195,6 +212,10 @@ function podeliKarte() {
     zbirKarataIgrac();
     poruka.innerHTML = "Играч је на потезу... Вредност = " + vrednostIgrac;
 
+    if (!nizDouble.includes(vrednostIgrac)) {
+        dugmeDouble.disabled = true;
+    }
+    
     if (vrednostIgrac == 21) {
         poruka.innerHTML = "BlackJack!";
         dugmeHit.disabled = true;
@@ -207,6 +228,7 @@ function podeliKarte() {
 
 //dodaje se nova karta korisniku kada je zatrazi klikom na dugme "hit"
 function Hit() {
+    dugmeSurrender.disabled = true;
     var karta = Math.floor(Math.random() * spilBrojKarata);
     nizIgrac[brojKarataIgrac] = nizKarte[karta];
     proveraOznake(nizIgrac);
@@ -249,15 +271,57 @@ function Stand() {
     kucaKarta1.style.background = "url(" + dest21 + ") no-repeat";
     zbirKarataKuca();
     zbirKarataIgrac();
-    while ((vrednostKuca < vrednostIgrac) && (vrednostKuca <= 21)) {
+    while ((vrednostKuca < 16) && (vrednostKuca <= 21)) {
         igraKuca();
     }
     Pobednik();
 }
 
+//korisnik se "predaje" i vraca polovinu svog uloga
+function Surrender() {
+    poruka.innerHTML = "Предали сте се!";
+    noviNovac += (ulog/2);
+    novacIgracInt = noviNovac;
+    novacIgracPolje.innerHTML = novacIgracInt.toString();
+    novacKucaInt += (ulog/2);
+    novacKucaPolje.innerHTML = novacKucaInt.toString();
+    dugmeIzadji.disabled = false;
+    dugmeStart.disabled = false;
+    unosNovca.disabled = false;
+    dugmeHit.disabled = true;
+    dugmeStand.disabled = true;
+    dugmeSurrender.disabled = true;
+    dugmeDouble.disabled = true;
+}
+
+//korisnik duplira ulog i dobija jos jednu kartu ako u zbiru ima 9,10 ili 11
+function Double() {
+    if ((novacIgracInt >= ulog) && (novacKucaInt >= ulog)) {
+        noviNovac -= ulog;
+        ulog *= 2;
+        novacIgracInt = noviNovac;
+        novacIgracPolje.innerHTML = noviNovac.toString();
+        dugmeSurrender.disabled = true;
+        var karta = Math.floor(Math.random() * spilBrojKarata);
+        nizIgrac[brojKarataIgrac] = nizKarte[karta];
+        proveraOznake(nizIgrac);
+        nizKarte.splice(karta, 1);
+        spilBrojKarata--;
+        var dest13 = nizIgrac[2].dest;
+        igracKarta3.style.background = "url("+ dest13 +") no-repeat";
+        brojKarataIgrac++;
+        zbirKarataIgrac();
+        Stand();
+    }
+    else {
+        alert("Немате/немамо довољно новца!");
+        dugmeDouble.disabled = true;
+    }
+}
+
 //nakon korisnika, kuca dobija karte
 function igraKuca() {
-    if ((vrednostKuca < vrednostIgrac) && (vrednostKuca <= 21)) {
+    if ((vrednostKuca < 16) && (vrednostKuca <= 21)) {
         switch (brojKarataKuca) {
             case 2:
                 var kucaTreca = Math.floor(Math.random() * spilBrojKarata);
@@ -298,11 +362,6 @@ function igraKuca() {
         }
         proveraOznake(nizKuca);
     }
-    /*
-    else
-        console.log("pobednik() u switch-u");
-        Pobednik();
-    */
 }
 
 //porede se karte korisnika i kuce i odredjuje pobednik
@@ -310,6 +369,8 @@ function Pobednik() {
     dugmeIzadji.disabled = true;
     dugmeHit.disabled = true;
     dugmeStand.disabled = true;
+    dugmeSurrender.disabled = true;
+    dugmeDouble.disabled = true;
     zbirKarataKuca();
     zbirKarataIgrac();
     if ((vrednostIgrac < vrednostKuca) && (vrednostKuca <= 21)) {
@@ -338,7 +399,6 @@ function Pobednik() {
         novacIgracInt = noviNovac;
         novacIgracPolje.innerHTML = novacIgracInt.toString();
         novacKucaInt -= (ulog + ulog/2);
-        //proveraPobede(novacKucaInt);
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     else if ((vrednostIgrac == 21) && (brojKarataIgrac > 2)) {
@@ -350,7 +410,6 @@ function Pobednik() {
         console.log("Ulog: "+ulog + ", Igrac: " + (novacIgracInt+(ulog*2)));
         novacIgracPolje.innerHTML = novacIgracInt.toString();
         novacKucaInt -= ulog;
-        //proveraPobede(novacKucaInt);
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     else {
@@ -361,7 +420,6 @@ function Pobednik() {
         novacIgracInt = noviNovac;
         novacIgracPolje.innerHTML = novacIgracInt.toString();
         novacKucaInt -= ulog;
-        //proveraPobede(novacKucaInt);
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     if (novacIgracInt != 0) {
@@ -369,6 +427,10 @@ function Pobednik() {
     }
     unosNovca.disabled = false;
     dugmeStart.disabled = false;
+    dugmeHit.disabled = true;
+    dugmeStand.disabled = true;
+    dugmeSurrender.disabled = true;
+    dugmeDouble.disabled = true;
     if (novacKucaInt == 0)
         krajPobeda();
 }
