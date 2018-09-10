@@ -272,6 +272,7 @@ function Stand() {
     zbirKarataKuca();
     zbirKarataIgrac();
     while ((vrednostKuca < 16) && (vrednostKuca <= 21)) {
+        proveraOznake(nizKuca);
         igraKuca();
     }
     Pobednik();
