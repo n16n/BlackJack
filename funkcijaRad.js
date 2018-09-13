@@ -271,7 +271,7 @@ function Stand() {
     kucaKarta1.style.background = "url(" + dest21 + ") no-repeat";
     zbirKarataKuca();
     zbirKarataIgrac();
-    while ((vrednostKuca < 16) && (vrednostKuca <= 21)) {
+    while ((zbirKarataKuca() < 16) && (vrednostKuca <= 21)) {
         proveraOznake(nizKuca);
         igraKuca();
     }
@@ -322,7 +322,7 @@ function Double() {
 
 //nakon korisnika, kuca dobija karte
 function igraKuca() {
-    if ((vrednostKuca < 16) && (vrednostKuca <= 21)) {
+    if ((zbirKarataKuca() < 16) && (vrednostKuca <= 21)) {
         switch (brojKarataKuca) {
             case 2:
                 var kucaTreca = Math.floor(Math.random() * spilBrojKarata);
@@ -403,6 +403,8 @@ function Pobednik() {
         novacKucaPolje.innerHTML = novacKucaInt.toString();
     }
     else if ((vrednostIgrac == 21) && (brojKarataIgrac > 2)) {
+        var dest21 = nizKuca[0].dest;
+        kucaKarta1.style.background = "url(" + dest21 + ") no-repeat";
         poruka.innerHTML = "Победили сте! Играч(" +vrednostIgrac+ ") , Кућа(" + vrednostKuca +")";
         noviNovac += (ulog * 2);
         console.log("Ulog: "+ulog +", Igrac: " + (novacIgracInt+(ulog*2)) + ", " +
