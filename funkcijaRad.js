@@ -308,7 +308,7 @@ function Double() {
         proveraOznake(nizIgrac);
         nizKarte.splice(karta, 1);
         spilBrojKarata--;
-        var dest13 = nizIgrac[2].dest;915
+        var dest13 = nizIgrac[2].dest;
         igracKarta3.style.background = "url("+ dest13 +") no-repeat";
         brojKarataIgrac++;
         zbirKarataIgrac();
